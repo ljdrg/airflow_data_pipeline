@@ -26,7 +26,7 @@ class LoadDimensionOperator(BaseOperator):
     def execute(self, context):
         redshift_hook = PostgresHook(postgres_conn_id=self.redshift_conn_id)
         
-         if not self.append_only:
+        if not self.append_only:
             self.log.info("Delete {} dimension table".format(self.table))
             redshift_hook.run("DELETE FROM {}".format(self.table))    
         
